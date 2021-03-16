@@ -1,11 +1,11 @@
 from os import mkdir
-from os.path import exists
+from os.path import exists,realpath
 from os import system
 from pathlib import Path
 
 HOME=str(Path.home())
 INSTALL_LOC=HOME+ "/.currim"
-CURRIM_LOC=__file__[:len(__file__)-22]
+CURRIM_LOC=realpath(__file__)[:len(realpath(__file__))-22]
 LMS=CURRIM_LOC+"/setup/wtc-lms"
  
 
@@ -64,5 +64,6 @@ def InstallLms():
     AddAlias()
     system(f"chmod +x {INSTALL_LOC}/main.py")
     system(f"chmod +x {lms_dest}")
+    system("bash")
     
 InstallCurrim()
